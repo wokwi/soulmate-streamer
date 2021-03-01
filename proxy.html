@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soulmate Streamer Launcher</title>
+  </head>
+  <body>
+    <h1>Soulmate Streamer Launcher 🚀</h1>
+    <button onclick="window.open('http://wokwi.github.io/soulmate-streamer/')">Start streaming to Soulmate</button>
+    <script>
+      let client = null;
+      let listener = setInterval(() => {
+        parent.postMessage({ app: 'wokwi', command: 'listen', version: 1 }, 'https://wokwi.com');
+      }, 200);
+
+      window.addEventListener('message', ({ data }) => {
+        if (data.client) {
+          client = data.port;
+        }
+        if (data.neopixels) {
+          if (client) {
+            client.postMessage(data);
+          }
+          if (listener) {
+            clearInterval(listener);
+            listener = null;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

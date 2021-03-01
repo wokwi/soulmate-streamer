@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wokwi → Soulmate Streamer</title>
+    <style>
+      .hidden {
+        display: none;
+      }
+
+      .status {
+        background: blue;
+        color: white;
+        padding: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Wokwi → Soulmate Streamer</h1>
+    <div id="connect">
+      Soulmate IP:
+      <input value="192.168.1.100" id="ip-address" />
+      <button onclick="connect()">Connect</button>
+    </div>
+    <div id="status" class="status hidden">Connecting...</div>
+    <pre id="soulmate-data"></pre>
+    <script src="connector.js"></script>
+  </body>
+</html>
